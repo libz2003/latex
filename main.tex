@@ -1,323 +1,73 @@
 \documentclass{article}
-
-%choose 1 or 2&3&4, put % to the other, if using xeCJK (Chinese), then change compiler from pdfLaTeX to XeLaTeX
-
 \usepackage[utf8]{inputenc}
-%\usepackage{xeCJK}
-%\setCJKmainfont{BabelStone Han}
-%\setCJKsansfont{Noto Sans CJK SC}
-
-\usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{amsthm}
 \usepackage{setspace}
-\usepackage{color}
-\usepackage{mathtools}
-\usepackage{mathrsfs}
-\usepackage{ifthen}
-\usepackage{tikz}
-\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
-\usepackage{tikz-cd}
-%https://www.jmilne.org/not/CDGuide.html
-%http://ctan.math.washington.edu/tex-archive/graphics/pgf/contrib/tikz-cd/tikz-cd-doc.pdf
-%for drawing commutative diagram
-\usepackage{verbatim}
-\usepackage{pgfplots}
-\usepackage{graphicx}
-\usepackage{marvosym}
-\usepackage{esvect}
+\usepackage{amsmath}
 
-\graphicspath{ {./images/} }
-
-\pgfplotsset{width=10cm,compat=1.15}
-
-%remind me专区
-{
-% 符号上面大波浪线 \widetilde{}
-% 表示显然 \Aquarius
-% 像\phi的符号 \psi
-% \tau去掉一横 \iota
-% 箭头上面有个\sim号 \xrightarrow{\sim}
-% esvect包的vector表示法 \vv
-}
-
-\newcommand{\inv}{^{-1}}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\ST}{\ s.t.\ }
-\newcommand{\With}{\quad w/\quad}
-\newcommand{\Def}{$\textbf{Def: }$}
-\newcommand{\Proof}{$\textbf{Proof: }$}
-\newcommand{\Observation}{$\textbf{Observation: }$}
-\newcommand{\Comment}{$\textbf{Comment: }$}
-\newcommand{\Remark}{$\textbf{Remark: }$}
-\newcommand{\Claim}{$\textbf{Claim: }$}
-\newcommand{\BigZero}{\text{\huge0}}
-\newcommand{\CC}{\mathbb{C}}
-\newcommand{\RR}{\mathbb{R}}
-\newcommand{\ZZ}{\mathbb{Z}}
-\newcommand{\QQ}{\mathbb{Q}}
-\newcommand{\NN}{\mathbb{N}}
-\newcommand{\FF}{\mathbb{F}}
-\newcommand{\OO}{\mathcal{O}}
-\newcommand{\CCC}{\mathcal{C}}
-\newcommand{\DDD}{\mathcal{D}}
-\newcommand{\EEE}{\mathcal{E}}
-\newcommand{\pp}{\mathfrak{p}}
-\newcommand{\qq}{\mathfrak{q}}
-\newcommand{\PP}{\mathbb{P}}
-\newcommand{\zvec}{\mathbf{0}}
-\newcommand{\vp}{\varphi}
-\newcommand{\id}{\text{id}}
-\newcommand{\Hom}{\text{Hom}}
-\newcommand{\End}{\text{End}}
-\newcommand{\dd}{\cdots}
-\newcommand{\oo}{\infty}
-\newcommand{\fa}{\ \forall}
-\newcommand{\im}{\text{im}\,}
-
-\newcommand{\Red}[1]{{\color{red}{#1}}}
-\newcommand{\Blue}[1]{{\color{blue}{#1}}}
-\newcommand{\Green}[1]{{\color[rgb]{0.2,0.7,0.2}{#1}}}
-\newcommand{\abs}[1]{\lvert #1\rvert}
-\newcommand{\norm}[1]{\lVert #1\rVert}
-\newcommand{\br}[1]{\{ #1 \}}
-\newcommand{\pr}[1]{\left( #1\right)}
-\newcommand{\fl}[1]{\left\lfloor #1\right\rfloor}
-\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
-\newcommand{\brk}[1]{\langle #1\rangle}
-\newcommand{\Lemma}[1]{$\textbf{Lemma #1 }$}
-\newcommand{\Theorem}[1]{$\textbf{Theorem #1 }$}
-\newcommand{\Proposition}[1]{$\textbf{Proposition #1 }$}
-\newcommand{\Eg}[1]{\textbf{Eg. #1 }}
-\newcommand{\Corollary}[1]{$\textbf{Corollary #1 }$}
-\newcommand{\Proofv}[1]{$\textbf{Proof #1: }$}
-\newcommand{\mo}[1]{$#1$-module}
-\newcommand{\smo}[1]{$#1$-submodule}
-
-\newcommand{\jac}[2]{\pr{\frac{#1}{#2}}}
-\newcommand{\up}[2]{#1^{\pr{#2}}}
-\newcommand{\pl}[2]{\ifthenelse{\equal{#1}{}}{\pr{1,2,\dd,#2}}{\pr{#1_1,#1_2,\dd,#1_#2}}}
-\newcommand{\bl}[2]{\ifthenelse{\equal{#1}{}}{\br{1,2,\dd,#2}}{\br{#1_1,#1_2,\dd,#1_#2}}}
-\newcommand{\nl}[2]{\ifthenelse{\equal{#1}{}}{1,2,\dd,#2}{#1_1,#1_2,\dd,#1_#2}}
-\newcommand{\rst}[2]{#1\!\mid_{#2}}
-
-\title{Example}
-\author{Bangzheng Li}
-\date{10/7/2020}
+\title{The first problem}
+\author{Benjamin Li}
+\date{March 2019}
 
 \begin{document}
-
-\setcounter{section}{0}
 
 \setstretch{1.523}
 
 \maketitle
 
-\section{Problem 1}
-
-Consider the ring homomorphism $\hat{\vp}:\CC[x,y]\rightarrow \CC[x^{\pm 1}]\times \CC[y^{\pm 1}],x\mapsto (x,0),y\mapsto (0,y)$.\\
-\Claim $\ker\hat{\vp}=(xy)$.\\
-\Proof every polynomials $f$ in $\CC[x,y]$ can be written into the form $c+xP(x)+yP(y)+xyR(x,y)$, where $c\in\CC,P\in\CC[x],Q\in\CC[y],R\in\CC[x,y]$, and we have $\hat{\vp}(f)=(c+xP(x),c+yQ(y))$, so we see that $f\in \ker\hat{\vp}\Leftrightarrow f\in (xy)$.\\
-$\blacksquare$\\
-Thus $\hat{\vp}$ induces an injective homomorphism $\vp:\CC[x,y]/(xy)\rightarrow \CC[x^{\pm 1}]\times \CC[y^{\pm 1}].$\\
-From this we can view $\CC[x^{\pm 1}]\times \CC[y^{\pm 1}]$ as a $\CC[x,y]/(xy)$-algebra.\\
-And we have $\vp(\overline{x+y})=\vp(\bar{x})+\vp(\bar{y})=(x,y)$ has inverse $(x\inv,y\inv)$ (in $\CC[x^{\pm 1}]\times \CC[y^{\pm 1}]$).\\
-Thus by proposition in lecture 9, $\exists \text{homomorphism }\vp':(\CC[x,y]/(xy))_{x+y}\rightarrow \CC[x^{\pm 1}]\times \CC[y^{\pm 1}]$ such that the following diagram commutes:\\
-
-\begin{tikzcd}
-\CC[x,y]/(xy)\ar{d}{\iota}\ar{rd}{\vp} & \\
-(\CC[x,y]/(xy))_{x+y}\ar[dotted]{r}{\vp'} & \CC[x^{\pm 1}]\times \CC[y^{\pm 1}]
-\end{tikzcd}\\ \\
-And from the construction in lecture 9, $\vp'$ is given by
-$$\vp'\pr{\frac{\overline{P(x,y)}}{\overline{x+y}^n}}=\vp\pr{\overline{P(x,y)}}\cdot (x^{-n},y^{-n})$$
-\Claim $\vp'$ is bijective, hence an isomorphism.\\
-\Proof injectivity: suppose $\vp'\pr{\frac{\overline{P(x,y)}}{\overline{x+y}^n}}=0$, then $\vp\pr{\overline{P(x,y)}}\cdot (x^{-n},y^{-n})=0$, and because $(x^{-n},y^{-n})$ is not a zero divisor, we see $\vp\pr{\overline{P(x,y)}}=0$, but $\vp$ is injective, hence $\overline{P(x,y)}=0\Rightarrow \frac{\overline{P(x,y)}}{\overline{x+y}^n}=0.$\\
-Surjectivity: $\forall \pr{\frac{P(x)}{x^n},\frac{Q(y)}{y^m}}\in \CC[x^{\pm 1}]\times \CC[y^{\pm 1}]$, pick $N\in\ZZ^+>\max(n,m)$, then
-$$\pr{\frac{P(x)}{x^n},\frac{Q(y)}{y^m}}=\pr{\frac{P(x)x^{N-n}}{x^N},\frac{Q(y)y^{N-m}}{y^N}}=\vp'\pr{\frac{\overline{P(x)x^{N-n}+Q(y)y^{N-m}}}{\overline{x+y}^N}}$$
-Thus $\vp'$ is surjective.\\
-$\blacksquare$\\
-So $\vp'$ gives the desired isomorphism.
-
-\section{Problem 2}
-
-Put $\lambda=\sqrt{-5}$.
-
-\subsection{a}
-
-$1/1=\frac{2}{2}\in I_2$, which is the identity of $A_2$, hence because $I_2$ is an ideal in $A_2$ we see $I_2=A_2$, hence $I_2$ is obvious free module of rank 1 because it is generated by $1/1\in A_2$.
-
-\subsection{b}
-
-\Claim $I_3=\frac{1+\lambda}{1}A_3$.\\
-\Proof $1+\lambda\in I\Rightarrow \frac{1+\lambda}{1}\in I_3\Rightarrow \frac{1+\lambda}{1}A_3\subset I_3$.\\
-And pick any $\frac{2x+(1+\lambda)y}{3^n}\in I_3(n\in\ZZ_{\ge 0}),$ we have $\frac{2x+(1+\lambda)y}{3^n}=\frac{(1-\lambda)x+3y}{3^{n+1}}\frac{1+\lambda}{1}$, this shows $I_3\subset \frac{1+\lambda}{1}A_3$.\\
-$\blacksquare$\\
-Consider the (\mo{A_3}) homomorphism $A_3\rightarrow I_3,x\rightarrow \frac{1+\lambda}{1}x.$\\
-It is surjective because $I_3=\frac{1+\lambda}{1}A_3$, it is injective because $\frac{1+\lambda}{1}\frac{a}{3^n}=0(a\in A,n\in\ZZ_{\ge 0})\Rightarrow \exists m\in\ZZ_{\ge 0}\ST 3^m (1+\lambda)a=0\Rightarrow[A\text{ is domain}] a=0\Rightarrow \frac{a}{3^n}=0$.
-
-\section{Problem 3}
-
-Put $\iota:A\rightarrow A_{\pp},a\rightarrow a/1$ as usual. Put $S=A-\pp$.\\
-\Claim for prime ideal $\qq\subset A$, TFAE:\\
-(1) $\qq\subset \pp$.\\
-(2) $sa\in \qq\Rightarrow a\in\qq\fa s\in S,a\in A$.\\
-\Proof $(1)\Rightarrow (2): \qq\subset \pp\Rightarrow S\cap \qq=\varnothing\Rightarrow [\qq\text{ prime}]\Rightarrow a\in\qq$.\\
-$(2)\Rightarrow (1):$ if $\qq\not\subset \pp$, then $\qq\cap S\ne \varnothing$.\\
-Let $s\in \qq\cap S$, then because $\qq$ is prime, $\exists a\in A-\qq$, then $sa\in \qq$ but $a\not\in \qq$, contradiction!\\
-$\blacksquare$\\
-From lecture 10, $\exists$a (set) bijection\\
-$\Psi:\br{\text{ideal }I\subset A:sa\in A\Rightarrow a\in I\fa s\in S,a\in A}\xrightarrow{\sim} \br{\text{ideal }I'\subset A_\pp}$.\\
-And $\Psi(I)=I_\pp,\Psi\inv(I')=\iota\inv(I')$.\\
-\Claim if $\qq\subset \pp$ is a prime ideal, then $\qq_\pp\subset A_\pp$ is also a prime ideal.\\
-\Proof $\qq_\pp\ne A_\pp$ because $\qq\ne A$ and $\Psi$ is a bijection.\\
-Suppose $\frac{a}{s}\frac{b}{t}\in\qq_\pp$ ($a,b\in A,s,t\in S$), then $\exists q\in \qq,r\in S\ST \frac{a}{s}\frac{b}{t}=\frac{q}{r}$.\\
-Thus $\exists l\in S\ST lrab=lstq\in \qq$.\\
-But $l,r\in S\Rightarrow l,r\not\in \qq$, thus because $\qq$ prime, we see $a\in \qq$ or $b\in\qq$.\\
-So $\frac{a}{s}\in \qq_\pp$ or $\frac{b}{t}\in \qq_\pp$, therefore $\qq_\pp$ is a prime ideal.\\
-$\blacksquare$\\
-\Claim if $\qq'\subset A_\pp$ is a prime ideal, then $\iota\inv(\qq')\subset A$ is a prime ideal.\\
-\Proof $\iota\inv(\qq')\ne A$ because $\qq'\ne A_\pp$ and $\Psi\inv$ is a bijection.\\
-Suppose $ab\in \iota\inv(\qq')(a,b\in A)$, then $\frac{ab}{1}\in \qq'\Rightarrow \frac{a}{1}\frac{b}{1}\in \qq'$\\
-$\Rightarrow \frac{a}{1}\in \qq'$ or $\frac{b}{1}\in \qq'\Rightarrow a\in \iota\inv(\qq')$ or $b\in \iota\inv(\qq')$.\\
-$\blacksquare$\\
-Therefore from these claims we see that the restriction of $\Psi$ on\\
-$\br{\text{prime ideal }\qq\subset\pp},\rst{\Psi}{\br{\text{prime ideal }\qq\subset \pp}}:\br{\text{prime ideal }\qq\subset \pp}\rightarrow$\\
-$\br{\text{prime ideal }\qq'\subset A_\pp}$ is a bijection.
-
-\section{Problem 4}
-
-Consider the map $\psi:(M\oplus N)_S\rightarrow M_S\oplus N_S,(m,n)/s\rightarrow (m/s,n/s)$\\
-and the map $\iota:M_S\oplus N_S\rightarrow (M\oplus N)_S,(m/s,n/t)\rightarrow (mt,ns)/(st)$.\\
-$\psi$ well-defined: $(m,n)/s=(m',n')/s'\Rightarrow \exists t\in S\ST ts'(m,n)=ts(m',n')\Rightarrow ts'm=tsm'\And ts'n=tsn'\Rightarrow (m/s,n/s)=(m'/s',n'/s')$.\\
-$\iota$ well-defined: $(m/s,n/t)=(m'/s',n'/t')\Rightarrow \exists r,l\in S\ST rms'=rm's\And lnt'=ln't\Rightarrow (rl)mts't'=(rl)m't'st\And (rl)nss't'=(rl)n's'st\Rightarrow (mt,ns)/(st)$\\
-$=(m't',n's')/(s't')$.\\
-It's easy to see that both $\psi$ and $\iota$ are \mo{A} homomorphisms.\\
-$\iota\circ \psi=\id:\iota\circ \psi((m,n)/s)=(ms,ns)/s^2=(m,n)/s$.\\
-$\psi\circ \iota=\id:\psi\circ \iota((m/s,n/t))=(mt/(st),ns/(st))=(m/s,n/t)$.\\
-Therefore $\psi$ gives the desired isomorphism $(M\oplus N)_S\xrightarrow{\sim} M_S\oplus N_S$.
-
-\section{Problem 5}
-
-\section{Problem 6}
-
-\section{Problem 7}
-
-\section{Problem 8}
-
-For $X\xrightarrow{f} Y,Z\xrightarrow{g}W$, we call the following commutative diagram D1:\\
-
-\begin{tikzcd}
-F(X)\ar{r}{F(f)}\ar{d}{\kappa_X} & F(Y)\ar{d}{\kappa_Y}\\
-F'(X)\ar{r}{F'(f)} & F'(Y)
-\end{tikzcd}\\ \\
-And call the following commutative diagram D2:\\
-
-\begin{tikzcd}
-G(Z)\ar{r}{G(g)}\ar{d}{\eta_Z} & G(W)\ar{d}{\eta_W}\\
-G'(Z)\ar{r}{G'(g)} & G'(W)
-\end{tikzcd}
-
-\subsection{a}
-
-We construct functor morphism $\widetilde{\kappa}:FG\Rightarrow F'G$ where $\widetilde{\kappa}_X=\kappa_{G(X)}$.\\
-Check: let $X\xrightarrow{f} Y$ (which induces $G(X)\xrightarrow{G(f)}G(Y)$), consider\\
-
-\begin{tikzcd}
-F(G(X))\ar{r}{F(G(f))}\ar{d}{\widetilde{\kappa}_X=\kappa_{G(X)}} & F(G(Y))\ar{d}{\widetilde{\kappa}_Y=\kappa_{G(Y)}}\\
-F'(G(X))\ar{r}{F'(G(f))} & F'(G(Y))
-\end{tikzcd}\\ \\
-Then this diagram is the same diagram as D1 if we take $X=G(X),Y=G(Y),f=G(f)$, thus commute. This shows $\widetilde{\kappa}$ is indeed functor morphism.\\
-Similarly we can define $\widetilde{\kappa}':FG'\Rightarrow F'G'$.\\
-Now we construct functor morphism $\widetilde{\eta}:FG\Rightarrow FG'$ where $\widetilde{\eta}_X=F(\eta_X)$.\\
-Check: let $X\xrightarrow{f} Y$ (which induces $G(X)\xrightarrow{G(f)}G(Y)$), consider\\
-
-\begin{tikzcd}
-F(G(X))\ar{r}{F(G(f))}\ar{d}{\widetilde{\eta}_X=F(\eta_X)} & F(G(Y))\ar{d}{\widetilde{\eta}_Y=F(\eta_Y)}\\
-F(G'(X))\ar{r}{F(G'(f))} & F(G'(Y))
-\end{tikzcd}\\ \\
-Route $\rightarrow\downarrow:F(\eta_Y)\circ F(G(f))=F(\eta_Y\circ G(f))$.\\
-Route $\downarrow\rightarrow:F(G'(f))\circ F(\eta_X)=F(G'(f)\circ \eta_X)$.\\
-From D2 we see $\eta_Y\circ G(f)=G'(f)\circ \eta_X$, which shows that the above diagram is commute, i.e. $\widetilde{\eta}$ is indeed functor morphism.\\
-Similarly we can define $\widetilde{\eta}':F'G\Rightarrow F'G'.$
-
-\subsection{b}
-
-We claim the following diagram commutes:\\
-
-\begin{tikzcd}
-FG\ar[Rightarrow]{r}{\widetilde{\eta}}\ar[Rightarrow]{d}{\widetilde{\kappa}} & FG'\ar[Rightarrow]{d}{\widetilde{\kappa}'}\\
-F'G\ar[Rightarrow]{r}{\widetilde{\eta}'} & F'G'
-\end{tikzcd}\\ \\
-We want to show that $\widetilde{\kappa}'\circ\widetilde{\eta}=\widetilde{\eta}'\circ \widetilde{\kappa}$, so we only need to show $\forall X,\widetilde{\kappa}'_X\circ \widetilde{\eta}_X=\widetilde{\eta}'_X\circ \widetilde{\kappa}_X$.\\
-This is equivalent to $\kappa_{G'(X)}\circ F(\eta_X)=F'(\eta_X)\circ \kappa_{G(X)}$, which is equivalent to the following diagram commutes:\\
-
-\begin{tikzcd}
-FG(X)\ar{r}{F(\eta_X)}\ar{d}{\kappa_{G(X)}} & FG'(X)\ar{d}{\kappa_{G'(X)}}\\
-F'G(X)\ar{r}{F'(\eta_X)} & F'G'(X)
-\end{tikzcd}\\ \\
-This is just D1 with $X=G(X),Y=G'(X),f=\eta_X$, thus commutes.
-
-\section{Problem 9}
-
-\subsection{a}
-
-Recall that in lecture 12, $\sigma_{X,F}$ is given by $\sigma_{X,F}(\tau)=\tau_X(1_X)$, where $\tau\in \Hom_{Fun}(F_X,F)$.\\
-
-\begin{tikzcd}
-\Hom_{Fun}(F_X,F)\ar{r}{\sigma_{X,F}}\ar{d}{\eta\circ ?} & F(X)\ar{d}{\eta_X}\\
-\Hom_{Fun}(F_X,G)\ar{r}{\sigma_{X,G}} & G(X)
-\end{tikzcd}\\ \\
-Now take any $\kappa\in \Hom_{Fun}(F_X,F)$.\\
-Route $\rightarrow\downarrow:\kappa\mapsto\eta_X(\sigma_{X,F}(\kappa))=\eta_X(\kappa_X(1_X))$.\\
-Route $\downarrow\rightarrow:\kappa\mapsto \sigma_{X,F}(\eta\circ \kappa)=(\eta\circ \kappa)_X(1_X)=\eta_X\circ \kappa_X(1_X)$.\\
-And they are obviously equal.
-
-\subsection{b}
-
-From lecture 12, we have $f^*_Y:\Hom_\CCC(Y,Y)\rightarrow \Hom_\CCC(X,Y),\psi\mapsto \psi\circ f$.\\
-
-\begin{tikzcd}
-\Hom_{Fun}(F_X,F)\ar{r}{\sigma_{X,F}}\ar{d}{?\circ f^*} & F(X)\ar{d}{F(f)}\\
-\Hom_{Fun}(F_Y,F)\ar{r}{\sigma_{Y,F}} & F(Y)
-\end{tikzcd}\\ \\
-Now take any $\kappa\in \Hom_{Fun}(F_X,F)$.\\
-Route $\rightarrow\downarrow:\kappa\mapsto F(f)(\sigma_{X,F}(\kappa))=F(f)(\kappa_X(1_X))$.\\
-Route $\downarrow\rightarrow:\kappa\mapsto \sigma_{Y,F}(\kappa\circ f^*)=(\kappa\circ f^*)_Y(1_Y)=\kappa_Y(f^*_Y(1_Y))=\kappa_Y(1_Y\circ f)=\kappa_Y(f)$.\\
-Because $\kappa:F_X\Rightarrow F$ is a morphism of functors, we have the following commutative diagram:\\
-
-\begin{tikzcd}
-\Hom_\CCC(X,X)\ar{r}{f\circ ?}\ar{d}{\kappa_X} & \Hom_\CCC(X,Y)\ar{d}{\kappa_Y}\\
-F(X)\ar{r}{F(f)} & F(Y)
-\end{tikzcd}\\ \\
-Route $\rightarrow\downarrow:1_X\mapsto \kappa_Y(f\circ 1_X)=\kappa_Y(f)$.\\
-Route $\downarrow\rightarrow:1_X\mapsto F(f)(\kappa_X(1_X))$.\\
-Thus we have $F(f)(\kappa_X(1_X))=\kappa_Y(f)$, i.e. the original diagram commutes.
-
-\section{Problem 10}
-
-\subsection{a}
-
-Let $\CCC=A\text{-Mod}$.\\
-We will construct a functor isomorphism $\kappa:F_{A}\Rightarrow F$.\\
-Let $M\in Ob(\CCC)$, then we define $\kappa_M:\Hom_\CCC(A,M)\rightarrow M,\psi\rightarrow \psi(1)$ (as sets).\\
-It is bijective because $\psi$ is uniquely determined by the value of it on 1.\\
-Check: $\forall X\xrightarrow{f} Y,\psi\in \Hom_\CCC(A,X)$, we have $(f\circ \psi)(1)=f(\psi(1))$, i.e. the diagram is commute. Hence $\kappa$ is indeed morphism of functors. And because each $\kappa_M$ is bijective, we see $\kappa$ is isomorphism of functors.\\
-Thus we have an isomorphism $\End_\CCC(A)\xrightarrow{\sim} \End_{Fun}(F_A)\xrightarrow{\sim}\End_{Fun}(F)$.\\
-It sends an element $g\in \End_\CCC(A)$ to $\eta^g\in \End_{Fun}(F_A)$ and then to $\kappa\circ \eta^g\circ \kappa\inv\in \End_{Fun}(F)$. And we have $A\xrightarrow{\sim}\End_\CCC(A),a\mapsto (g_a:1\mapsto a)$.\\
-Thus we get an isomorphism $A\xrightarrow{\sim} \End_{Fun}(F),a\mapsto \iota^a$, where $\iota^a_M(m)=am$.\\
-And the composition is given by $\iota^a\circ \iota^b=\iota^{ab}$.
-
-\subsection{b}
-
-Let $\CCC=\text{Rings}$.\\
-We will construct a functor isomorphism $\kappa:F_{\ZZ[x]}\Rightarrow F$.\\
-Let $M\in Ob(\CCC)$, then we define $\kappa_M:\Hom_\CCC(\ZZ[x],M)\rightarrow M,\psi\rightarrow \psi(x)$ (as sets).\\
-It is bijective because $\psi$ is uniquely determined by the value of it on $x$ (since $\psi(1)$ must be 1).\\
-Check: $\forall X\xrightarrow{f} Y,\psi\in \Hom_\CCC(\ZZ[x],X)$, we have $(f\circ \psi)(x)=f(\psi(x))$, i.e. the diagram is commute. Hence $\kappa$ is indeed morphism of functors. And because each $\kappa_M$ is bijective, we see $\kappa$ is isomorphism of functors.\\
-Thus we have an isomorphism $\End_\CCC(\ZZ[x])\xrightarrow{\sim} \End_{Fun}(F_{\ZZ[x]})\xrightarrow{\sim}\End_{Fun}(F)$.\\
-It sends an element $g\in \End_\CCC(\ZZ[x])$ to $\eta^g\in \End_{Fun}(F_{\ZZ[x]})$ and then to $\kappa\circ \eta^g\circ \kappa\inv\in \End_{Fun}(F)$. And we have $\ZZ[x]\xrightarrow{\sim}\End_\CCC(\ZZ[x]),P\mapsto (g_a:x\mapsto P)$.\\
-Thus we get an isomorphism $\ZZ[x]\xrightarrow{\sim} \End_{Fun}(F),P\mapsto \iota^P$, where $\iota^P_R(r)=P(r)$.\\
-And the composition is given by $\iota^P\circ \iota^Q=\iota^{P\circ Q}$.
+\section{(a) and (b)}
+Every positive number can be expressed in this fashion in exactly 2 ways\\
+As a result, every negative number can also be expressed in this fashion in exactly 2 ways\\
+0 cannot be expressed in this fashion (if an expression starts with $2^{i_0}$, then $2^{i_0+1}\nmid 0$)\\
+This gives an answer to both (1) and (2)\\[22pt]
+Claim $(P)$: moreover, for a positive number $n$, one way starts with a positive number, the other starts with a negative number\\
+Define $k_n=v_2(n)$\\
+Suppose we write $n=\sum\limits_{i=0}^{M} v_i 2^i$ in this fashion\\
+Then $v_0=v_1=...=v_{k_n-1}=0,v_{k_n}\ne 0$ (It's clear)\\
+Lemma 1:\\
+(a)$2^{k_n}\le n$\\
+(b)If $n<2^N$, then $n+2^{k_n}\le 2^N$\\
+Prove: (a) is clear, for (b), just apply (a) to $2^N-n$\\
+Since $2^{k_n}\le n<2^N\Rightarrow k_n<N$, so $k_{2^N-n}=k_n$\\
+Q.E.D.\\
+Lemma 2: $(P)$ is true for all $n=2^{n_0}$\\
+Prove: It's clear that the only expressions of this type is $2^{n_0}$ and $-2^{n_0}+2^{n_0+1}$, so $(P)$ is true\\
+Q.E.D.\\
+We prove $(P)$ by showing that $(P)$ is true for every positive $n\le 2^N$, given arbitrary large $N$\\
+We denote this statement by $(P_N)$\\
+We prove $(P_N)$ by using induction on $N-k_n$\\
+If $N-k_n=0$, then $n=2^N$, from lemma 2 we see $(P_N)$ is true\\
+Suppose $(P_N)$ is true for all $N-k_n\le l$\\
+For $N-k_n=l+1$\\
+If $n=2^{k_n}$ then from lemma 2 $(P_N)$ is true\\
+Otherwise $0<n-2^{k_n}<n+2^{k_n}\le 2^N$\\
+We have both $N-k_{n-2^{k_n}}$ and $N-k_{n+2^{k_n}}$ are less than $N-k_n$\\
+So by our assumption we have\\
+$n-2^{k_n}$ can be expressed in this fashion with negative starting number in exactly 1 way\\
+$n+2^{k_n}$ can be expressed in this fashion with positive starting number in exactly 1 way\\
+By doing this we find that there's exactly 1 way to express $n$ in this fashion with positive starting number\\
+And there's exactly 1 way to express $n$ in this fashion with negative starting number\\
+Q.E.D.
+\section{(c)}
+We prove that every positive number $n$ can be expressed as an alternating sum of an increasing sequence of Fibonacci numbers $F_i$ ($F_1=F_2=1$)\\
+And obviously for some $n$ there are multiple ways\\
+For example $5=-8+13=1-2+3-5+8$\\[22pt]
+Lemma: $\forall n\in \mathbb{Z}^+,\exists u_i\in \{0,1\}$ such that\\
+$n=\sum\limits_{i=2}^N u_i F_i$\\
+Prove: use induction\\
+For $n=1$, it is clear\\
+For $n>1$, pick the largest $F_{i_0}$ that is $\le n$\\
+Then $n-F_{i_0}<F_{i_0+1}-F_{i_0}=F_{i_0-1}<F_{i_0}$\\
+And by induction it is true for $n-F_{i_0}$\\
+So it is true for $n$\\
+Q.E.D.\\
+For convenience, denote $u_1=u_{N+1}=0$\\
+Pick $v_i=u_{i-2}-u_{i-1}\in \{-1,0,1\}(i=3,4,...,N+2)$\\
+Claim: $n=\Sigma\triangleq\sum\limits_{i=3}^{N+2} v_i F_i$\\
+Prove: $\Sigma=\sum\limits_{i=3}^{N+2}(u_{i-2}-u_{i-1})F_i$\\
+$=2u_1-u_{N+1}F_{N+2}+\sum\limits_{i=2}^N u_i(F_{i+2}-F_{i+1})=\sum\limits_{i=2}^N u_i F_i=n$\\
+And note that $|\sum\limits_{i=a}^b v_i|=|u_{a-2}-u_{b-1}|\le 1$\\
+So there can't be consecutive subsequence of $v_i$ that goes like\\
+$1,0,0,...,0,1$ or\\
+$-1,0,0,...,0,-1$
 
 \end{document}
